@@ -21,8 +21,8 @@
         <% if devise_mapping.rememberable? -%>
           <div class='checkbox'>
              <label>
-              <input id='user_remember_me' name='user[remember_me]' type='checkbox' value='1'>
-              <%= f.check_box :remember_me, 'ログイン情報を記憶する', class: 'memory-check' %>
+             <input id='user_remember_me' name='user[remember_me]' type='checkbox' value='1'>
+              <%= f.label :remember_me, 'ログイン情報を記憶する', class: 'memory-check' %>
             </label>
           </div>
         <% end %>
