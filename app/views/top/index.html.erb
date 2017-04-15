@@ -16,6 +16,5 @@
     <%= f.text_field :text, placeholder: "例：好きな食べ物は？" %>
     <%= f.submit "質問する" %>
   <% end %>
-  <% binding.pry %>
   <%= render partial: "questions/question", collection: @questions %>
 <% end %>
