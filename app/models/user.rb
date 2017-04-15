@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
   belongs_to :group
-  has_many :questions, -> {order("created_at DESC")}
+  has_many :questions, ->{ order("created_at DESC") }
+  has_many :answers, ->{ order("updated_at DESC") }
 
   before_validation :group_key_to_id, if: :has_group_key?
 
