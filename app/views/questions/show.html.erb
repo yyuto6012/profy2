@@ -4,7 +4,7 @@
     <div class="group_action panel panel-default">
       <div class="panel-body">
         <% unless @answers.exists?(user_id: current_user.id) %>
-          <%= link_to '質問に回答する', anwer_new_path(question_id: @question.id) %>
+          <%= link_to '質問に回答する', new_answer_path(question_id: @question.id) %>
         <% else %>
           <h4>※回答済み※</h4>
         <% end %>
