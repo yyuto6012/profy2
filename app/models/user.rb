@@ -9,14 +9,16 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
   belongs_to :group
-  has_many :questions, -> {order("created_at DESC")}
+  has_many :questions, ->{ order("created_at DESC") }
+  has_many :answers, ->{ order("updated_at DESC") }
+  has_many :answered_questions, through: :answers, source: :question
 
   before_validation :group_key_to_id, if: :has_group_key?
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     group_key = conditions.delete(:group_key)
-    group_id = Group.where(key: group_key).first
+    group_id =  Group.where(group_key: group_key).first
     email = conditions.delete(:email)
 
     # devise認証を、複数項目に対応させる
@@ -28,6 +30,7 @@ class User < ApplicationRecord
     else
       false
     end
+
   end
 
   def name
