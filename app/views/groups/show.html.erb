@@ -1,6 +1,7 @@
+<%= provide :title, "#{@group.group_key}" %>
 <div class="row form">
   <div class="col-lg-12">
-    <h3><%= @group.key %>
+    <h3><%= @group.group_key %>
       <small class="edit">
         <% link_to "編集", edit_group_path(@group) %>
       </small>
